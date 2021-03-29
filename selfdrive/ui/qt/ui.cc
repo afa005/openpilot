@@ -2,6 +2,7 @@
 
 #include "window.hpp"
 #include "qt_window.hpp"
+#include "app.hpp"
 
 int main(int argc, char *argv[]) {
   QSurfaceFormat fmt;
@@ -18,7 +19,7 @@ int main(int argc, char *argv[]) {
   QApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
 #endif
 
-  QApplication a(argc, argv);
+  Application a(argc, argv);
   MainWindow w;
   setMainWindow(&w);
   a.installEventFilter(&w);

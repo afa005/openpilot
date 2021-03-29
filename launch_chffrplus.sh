@@ -6,6 +6,8 @@ fi
 
 source "$BASEDIR/launch_env.sh"
 
+./selfdrive/assets/fonts/cjk-fonts/installer.sh
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 function two_init {

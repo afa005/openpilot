@@ -6,6 +6,7 @@
 #ifndef QCOM
 #include "networking.hpp"
 #endif
+#include "app.hpp"
 #include "settings.hpp"
 #include "widgets/input.hpp"
 #include "widgets/toggle.hpp"
@@ -90,6 +91,16 @@ DevicePanel::DevicePanel(QWidget* parent) : QWidget(parent) {
     device_layout->addWidget(new LabelControl(QString::fromStdString(l.first),
                              QString::fromStdString(l.second)));
   }
+
+  device_layout->addWidget(horizontal_line());
+
+  const char* launch_locale = "am start -a android.settings.LOCALE_SETTINGS \
+                                  --ez extra_prefs_show_button_bar true \
+                                  --es extra_prefs_set_next_text ''";
+  device_layout->addWidget(new ButtonControl(SettingsWindow::tr("Language"),
+                                             SettingsWindow::tr("OPEN"),
+                                             "language settings",
+                                             [=]() { std::system(launch_locale); }));
 
   device_layout->addWidget(horizontal_line());
 
